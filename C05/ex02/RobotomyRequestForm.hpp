@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:24:21 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 15:00:00 by eavilov          ###   ########.fr       */
+/*   Created: 2023/01/29 13:42:51 by eavilov           #+#    #+#             */
+/*   Updated: 2023/01/29 13:52:28 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef	ROBOTOMYREQUESTFORM_HPP
+#define	ROBOTOMYREQUESTFORM_HPP
 
-#include <iostream>
+#include "PresidentialPardonForm.hpp"
 
-class Harl	
+class RobotomyRequestForm : public Form
 {
 	private:
-		void	debug();
-		void	info();
-		void	warning();
-		void	error();
 	public:
-		void	complain(std::string level);
-	Harl();
-	~Harl();
+		RobotomyRequestForm(const std::string target);
+		~RobotomyRequestForm();
 };
-
-typedef	void(Harl::*FunctionPointer)();
 
 #endif

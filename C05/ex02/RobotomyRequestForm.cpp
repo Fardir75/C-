@@ -1,33 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:24:21 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 15:00:00 by eavilov          ###   ########.fr       */
+/*   Created: 2023/01/29 13:42:44 by eavilov           #+#    #+#             */
+/*   Updated: 2023/01/29 14:09:05 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#include "RobotomyRequestForm.hpp"
 
-#include <iostream>
-
-class Harl	
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : Form("Robotomy Request", 72, 45)
 {
-	private:
-		void	debug();
-		void	info();
-		void	warning();
-		void	error();
-	public:
-		void	complain(std::string level);
-	Harl();
-	~Harl();
-};
+	std::cout << "Robotomy Request Form created for " << target << std::endl;
+}
 
-typedef	void(Harl::*FunctionPointer)();
-
-#endif
+RobotomyRequestForm::~RobotomyRequestForm()
+{
+}

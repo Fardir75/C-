@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:24:21 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 15:00:00 by eavilov          ###   ########.fr       */
+/*   Created: 2023/01/29 13:43:38 by eavilov           #+#    #+#             */
+/*   Updated: 2023/01/29 13:51:23 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef	SHRUBBERYCREATIONFORM_HPP
+#define	SHRUBBERYCREATIONFORM_HPP
 
-#include <iostream>
+#include "RobotomyRequestForm.hpp"
 
-class Harl	
+class ShrubberyCreationForm : public Form
 {
 	private:
-		void	debug();
-		void	info();
-		void	warning();
-		void	error();
 	public:
-		void	complain(std::string level);
-	Harl();
-	~Harl();
+		ShrubberyCreationForm(const std::string target);
+		~ShrubberyCreationForm();
 };
-
-typedef	void(Harl::*FunctionPointer)();
 
 #endif

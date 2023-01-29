@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:45:06 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 12:13:42 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/01/29 12:53:23 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,21 @@
 
 #include <iostream>
 
+class Form;
+
 class Bureaucrat
 {
 	private:
 		const std::string	name;
-		unsigned int		level;
+		int					level;
 	public:
-		Bureaucrat(const std::string name, unsigned int level);
+		Bureaucrat(const std::string name, int level);
 		~Bureaucrat();
 		std::string		getName() const;
-		unsigned int	getGrade() const;
+		int	getGrade() const;
 		void	incrementGrade();
 		void	decrementGrade();
+		void	signForm(Form &contract);
 
 	/* Exception classes */
 

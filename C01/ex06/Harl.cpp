@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 18:25:58 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/17 08:24:56 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/01/29 15:04:11 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	Harl::error()
 	std::cout << "This is unacceptable ! I want to speak to the manager now." << std::endl;
 }
 
-int	Harl::complain(std::string level)
+void	Harl::complain(std::string level)
 {
 	FunctionPointer	functions[4];
 	std::string		levels[4];
 	int				index = 0;
-	int				return_value = 0;
+	int				switch_value = 0;
 	
 	functions[0] = &Harl::debug;
 	functions[1] = &Harl::info;
@@ -60,8 +60,39 @@ int	Harl::complain(std::string level)
 	while (index < 4)
 	{
 		if (!levels[index].compare(level))
-			return_value += index + 1;
+			switch_value += index + 1;
 		index++;
 	}
-	return (return_value);
+	switch (switch_value)
+	{
+		case 1:
+		{
+			(this->*functions[0])();
+			(this->*functions[1])();
+			(this->*functions[2])();
+			(this->*functions[3])();
+			break ;
+		}
+		case 2:
+		{
+			(this->*functions[1])();
+			(this->*functions[2])();
+			(this->*functions[3])();
+			break ;
+		}
+		case 3:
+		{
+			(this->*functions[2])();
+			(this->*functions[3])();
+			break ;
+		}
+		case 4:
+		{
+			(this->*functions[2])();
+			(this->*functions[3])();
+			break ;
+		}
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
 }

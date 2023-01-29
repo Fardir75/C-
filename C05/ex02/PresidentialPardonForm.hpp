@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:24:21 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 15:00:00 by eavilov          ###   ########.fr       */
+/*   Created: 2023/01/29 13:41:51 by eavilov           #+#    #+#             */
+/*   Updated: 2023/01/29 13:52:33 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
+#ifndef	PRESIDENTIALPARDONFORM_HPP
+#define	PRESIDENTIALPARDONFORM_HPP
 
-#include <iostream>
+#include "Form.hpp"
 
-class Harl	
+class PresidentialPardonForm : public Form
 {
 	private:
-		void	debug();
-		void	info();
-		void	warning();
-		void	error();
 	public:
-		void	complain(std::string level);
-	Harl();
-	~Harl();
+		PresidentialPardonForm(const std::string target);
+		~PresidentialPardonForm();
 };
-
-typedef	void(Harl::*FunctionPointer)();
 
 #endif

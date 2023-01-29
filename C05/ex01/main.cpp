@@ -6,43 +6,35 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 12:00:09 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/01/29 12:56:14 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-int main()
+int main ()
 {
 	try
 	{
-		Bureaucrat	bob("Bob", 130);
-		bob.incrementGrade();
-		std::cout << bob << std::endl;
+		Form	f24b("24B", 24, 0);
+		std::cout << f24b << std::endl;
 	}
-	catch (Bureaucrat::GradeTooLowException &e)
+	catch (Form::GradeTooLowException &e)
 	{
-		std::cout << e.whaat() << std::endl;
+		std::cout << "Exception : " << e.whaat() << std::endl;
 	}
-	catch (Bureaucrat::GradeTooHighException &e)
+	catch (Form::GradeTooHighException &e)
 	{
-		std::cout << e.whaat() << std::endl;
+		std::cout << "Exception : " << e.whaat() << std::endl;
 	}
-	try
-	{
-		Bureaucrat	michel("Michel", 1);
-		std::cout << michel << std::endl;
-		michel.incrementGrade(); // comment either this or the next one
-		Bureaucrat	isabelle("Isabelle", 150);
-		std::cout << isabelle << std::endl;
-		isabelle.decrementGrade();
-	}
-	catch (Bureaucrat::GradeTooLowException &e)
-	{
-		std::cout << e.whaat() << std::endl;
-	}
-	catch (Bureaucrat::GradeTooHighException &e)
-	{
-		std::cout << e.whaat() << std::endl;
-	}
+	Form		f24b("24B", 24, 1);
+	Bureaucrat	john("John", 10);
+	Bureaucrat	mike("Mike", 50);
+
+	std::cout << f24b << std::endl;
+	mike.signForm(f24b);
+	std::cout << f24b << std::endl;
+	john.signForm(f24b);
+	std::cout << f24b << std::endl;
+	return (0);
 }
