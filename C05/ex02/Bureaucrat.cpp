@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:45:31 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 14:47:35 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/01/31 14:37:58 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,20 +81,30 @@ void	Bureaucrat::executeForm(Form const &form)
 	{
 		form.execute(*this);
 		std::cout << this->name << " executed the form [ " << form.getName() << " ]" << std::endl;
+		if (form.getName() == "Robotomy Request")
+			std::cout << form.getTarget() << " has been robotomised(?) 50%% of the time" << std::endl;
+		if (form.getName() == "Presidential Pardon")
+			std::cout << form.getTarget() << " has been pardoned by the President Zaphod Beeblobrox" << std::endl;
 	}
 	catch(Bureaucrat::GradeTooLowException &e)
 	{
 		std::cout << this->name << " couldn't execute " << form.getName() << " because [";
 		std::cout << e.whaat() << "]" << std::endl;
+		if (form.getName() == "Robotomy Request")
+			std::cout << "The operation to robotomise " << form.getTarget() << " failed" << std::endl;
 	}
 	catch(Bureaucrat::GradeTooHighException &e)
 	{
 		std::cout << this->name << " couldn't execute " << form.getName() << " because [";
 		std::cout << e.whaat() << "]" << std::endl;
+		if (form.getName() == "Robotomy Request")
+			std::cout << "The operation to robotomise " << form.getTarget() << " failed" << std::endl;
 	}
 	catch(Bureaucrat::FormNotSignedException &e)
 	{
 		std::cout << this->name << " couldn't execute " << form.getName() << " because [";
 		std::cout << e.whaat() << "]" << std::endl;
+		if (form.getName() == "Robotomy Request")
+			std::cout << "The operation to robotomise " << form.getTarget() << " failed" << std::endl;
 	}
 }

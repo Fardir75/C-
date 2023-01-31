@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:15:15 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 14:44:07 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/01/31 14:29:13 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,14 @@ void	Form::execute(Bureaucrat const &executor) const
 		throw Form::GradeTooLowException();
 	else if (executor.getGrade() < 1)
 		throw Form::GradeTooHighException();
+}
+
+void	Form::setTarget(const std::string &target)
+{
+	this->target = target;
+}
+
+std::string	Form::getTarget() const
+{
+	return this->target;
 }
