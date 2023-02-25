@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:44:53 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 13:16:18 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:57:07 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ class WrongAnimal
     protected:
         std::string type;
     public:
+        WrongAnimal(const WrongAnimal &cpy);
+        WrongAnimal &operator=(const WrongAnimal &ass);
         WrongAnimal();
         virtual ~WrongAnimal();
         void    makeSound() const;

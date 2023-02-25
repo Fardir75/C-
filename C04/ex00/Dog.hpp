@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:11:53 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 13:02:16 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:52:26 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ class Dog : public Animal
 {
     private:
     public:
+        Dog(const Dog &cpy);
+        Dog &operator=(const Dog &ass);
         Dog();
         ~Dog();
+        
         void    makeSound();
 };
 

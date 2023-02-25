@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:15:20 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 12:57:16 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/25 17:04:58 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ std::string Animal::getType() const
 
 Animal  &Animal::operator=(const Animal &replacement)
 {
+    if (this == &replacement)
+        return *this;
     this->type = replacement.getType();
     return *this;
 }
@@ -43,4 +45,10 @@ void    Animal::makeSound() const
         std::cout << "Nyaaa" << std::endl;
     else
         std::cout << "Wrong Animal" << std::endl;
+}
+
+Animal::Animal(const Animal &cpy)
+{
+    std::cout << "copy constructor called" << std::endl;
+    *this = cpy;
 }

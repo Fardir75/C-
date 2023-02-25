@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 11:44:27 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/25 15:53:53 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,12 @@ int main()
 
     delete  wrong;
     delete  wrongCat;
+    
+    std::cout << std::endl << "     [ Orthodox canonical form tests ]" << std::endl;
+
+    const Dog test;
+    const Dog test2(test);
+    const Dog test3 = test2;
 
     return 0;
 }
