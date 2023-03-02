@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:11:27 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 11:40:13 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/01 09:16:23 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,19 @@ void	WrongAnimal::makeSound() const
 std::string	WrongAnimal::getType() const
 {
 	return this->type;
+}
+
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &ass)
+{
+    if (this == &ass)
+        return *this;
+    std::cout << "assignement copy called" << std::endl;
+    this->type = ass.getType();
+    return *this;
+}
+
+WrongAnimal::WrongAnimal(const WrongAnimal &cpy)
+{
+    std::cout << "copy constructor called" << std::endl;
+    *this = cpy;
 }

@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:15:20 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 12:56:14 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/01 09:13:04 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Animal::Animal()
 {
-    std::cout << "Created animal" << std::endl;
     if (!this->type.size())
         this->type = "WrongAnimal";
+    std::cout << "Created animal" << std::endl;
 }
 
 Animal::~Animal()
@@ -31,16 +31,19 @@ std::string Animal::getType() const
 
 Animal  &Animal::operator=(const Animal &replacement)
 {
+    if (this == &replacement)
+        return *this;
     this->type = replacement.getType();
     return *this;
 }
 
 void    Animal::makeSound() const
 {
-    if (getType() == "Dog")
-        std::cout << "Ouaf" << std::endl;
-    else if (getType() == "Cat")
-        std::cout << "Nyaaa" << std::endl;
-    else
-        std::cout << "Wrong Animal" << std::endl;
+    std::cout << "Animals don't make sounds" << std::endl;
+}
+
+Animal::Animal(const Animal &cpy)
+{
+    std::cout << "copy constructor called" << std::endl;
+    *this = cpy;
 }

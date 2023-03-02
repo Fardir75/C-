@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 12:34:52 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 12:39:51 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/01 09:08:38 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,18 @@ Brain::Brain()
 Brain::~Brain()
 {
 	std::cout << "Brain destroyed" << std::endl;
+}
+
+Brain &Brain::operator=(const Brain &brain)
+{
+	if (this == &brain)
+		return (*this);
+	for (int i = 0; i<100; i++)
+    	this->ideas[i] = brain.ideas[i];
+  	return *this;
+}
+
+Brain::Brain(const Brain &cpy)
+{
+	*this = cpy;
 }

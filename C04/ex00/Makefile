@@ -39,17 +39,17 @@ OBJS	= $(SRCS:.cpp=.o)
 
 FLAGS  = -Wall -Wextra -Werror -std=c++98
 RM		= rm -f
-CC		= c++
+CC		= c++ 
 
 all: ${NAME}
 
-${NAME}: ${OBJS} ${HEAD}
+${NAME}: ${OBJS} ${HEAD} Makefile
 	c++ ${FLAGS} ${SRCS} -o $(NAME)
-	printf "${ERASE}${BLACK}${CC} ${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}"
+	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
 %.o : %.cpp
 	c++ -c $< -o ${<:.cpp=.o}
-	printf "${ERASE}${BLACK}${CC} ${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}"
+	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
 #--------------------------------------------------------#
 #					--	 MAKE COMMANDS	--			 	 #
