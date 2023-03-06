@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:11:53 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:15:26 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:25:02 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class Dog : public Animal
         Dog();
         ~Dog();
         void    makeSound() const;
+        void    printIdeas() const;
 };
 
 #endif

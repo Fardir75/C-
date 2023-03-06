@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:56:20 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/17 10:00:10 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:43:01 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	SizeCheck(std::string temp, std::string *object)
 {
-	unsigned long	len;
-
-	len = 0;
 	if (temp.length() <= 10)
 	{
 		*object += temp + " ";
@@ -66,19 +63,29 @@ void	Contact::FillInfo()
 	std::string	temp;
 
 	std::cout << "Set First Name : ";
-	std::getline(std::cin, temp);
+	while (std::getline(std::cin, temp))
+		if (temp.size() > 0)
+			break ;
 	SizeCheck(temp, &FirstName);
 	std::cout << "Set Last Name : ";
-	std::getline(std::cin, temp);
+	while (std::getline(std::cin, temp))
+		if (temp.size() > 0)
+			break ;
 	SizeCheck(temp, &LastName);
 	std::cout << "Set NickName : ";
-	std::getline(std::cin, temp);
+	while (std::getline(std::cin, temp))
+		if (temp.size() > 0)
+			break ;
 	SizeCheck(temp, &NickName);
 	std::cout << "Set Phone Number : ";
-	std::getline(std::cin, temp);
+	while (std::getline(std::cin, temp))
+		if (temp.size() > 0)
+			break ;
 	SizeCheck(temp, &PhoneNumber);
 	std::cout << "Set Darkest Secret: ";
-	std::getline(std::cin, temp);
+	while (std::getline(std::cin, temp))
+		if (temp.size() > 0)
+			break ;
 	SizeCheck(temp, &DarkestSecret);
 	std::cout << "Type something : "; 
 }

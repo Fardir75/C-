@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:14:59 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:11:36 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:43:58 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Dog &Dog::operator=(const Dog &ass)
         return *this;
     std::cout << "assignement copy called" << std::endl;
     this->type = ass.getType();
-    this->ideas = new Brain(*ass.ideas);
+    ideas = new Brain(*ass.ideas);
     return *this;
 }
 
@@ -44,4 +44,9 @@ Dog::Dog(const Dog &cpy) : Animal()
 {
     std::cout << "copy constructor called" << std::endl;
     *this = cpy;
+}
+
+void    Dog::printIdeas() const
+{
+    ideas->printIdeas();
 }

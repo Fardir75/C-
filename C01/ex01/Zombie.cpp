@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 17:48:43 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/13 18:45:22 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:11:46 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	Zombie::announce(void)
 		std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-void	Zombie::SetName(std::string name)
+void	Zombie::setName(std::string name)
 {
 	this->name = name;
 }

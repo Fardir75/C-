@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:11:25 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:15:34 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:25:08 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Cat : public Animal
         Cat();
         ~Cat();
         void    makeSound() const;
+        void    printIdeas() const;
 };
 
 #endif

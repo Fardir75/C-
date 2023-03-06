@@ -34,7 +34,7 @@ RM		= rm -f
 
 all: ${NAME}
 
-${NAME}: ${OBJS} ${HEAD}
+${NAME}: ${OBJS} ${HEAD} Makefile
 	c++ ${FLAGS} ${SRCS} -o $(NAME)
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 

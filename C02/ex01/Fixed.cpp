@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 08:09:10 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/25 11:28:40 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:50:59 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,24 @@ Fixed::Fixed(const Fixed &cpy)
 	this->setRawBits(cpy.getRawBits());
 }
 
-Fixed::Fixed(int nb_int) : integer(nb_int << fractional_integer)
+Fixed::Fixed(int nb_int) : integer(nb_int << fractionalInteger)
 {
 	std::cout << "Int constructor called" << std::endl;
 }
 
-Fixed::Fixed(float nb_float) : integer(roundf(nb_float * (1 << fractional_integer)))
+Fixed::Fixed(float nb_float) : integer(roundf(nb_float * (1 << fractionalInteger)))
 {
 	std::cout << "Float constructor called" << std::endl;
 }
 
 int	Fixed::toInt() const
 {
-	return this->integer >> fractional_integer;
+	return this->integer >> fractionalInteger;
 }
 
 float   Fixed::toFloat() const
 {
-    return static_cast<float>(this->getRawBits()) / (1 << fractional_integer);
+    return static_cast<float>(this->getRawBits()) / (1 << fractionalInteger);
 }
 
 std::ostream &operator<<(std::ostream &o, Fixed const &i)

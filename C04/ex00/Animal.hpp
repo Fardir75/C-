@@ -6,12 +6,12 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:10:59 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:05:40 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:55:03 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#ifndef AMIMAL_HPP
+#define AMIMAL_HPP
 
 #include <iostream>
 #include "WrongCat.hpp"

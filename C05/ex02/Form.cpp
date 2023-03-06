@@ -6,20 +6,20 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 12:15:15 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/31 14:29:13 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/06 19:32:12 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form(const std::string name, int const grade_to_sign, int const grade_to_exec) : name(name), grade_to_sign(grade_to_sign), grade_to_exec(grade_to_exec)
+Form::Form(const std::string name, int const gradeToSign, int const gradeToExec) : name(name), gradeToSign(gradeToSign), gradeToExec(gradeToExec)
 {
 	std::cout << "Form created" << std::endl;
-	if (grade_to_exec < 1 || grade_to_sign < 1)
+	if (gradeToExec < 1 || gradeToSign < 1)
 		throw Form::GradeTooHighException();
-	if (grade_to_exec > 150 || grade_to_sign > 150)
+	if (gradeToExec > 150 || gradeToSign > 150)
 		throw Form::GradeTooLowException();
-	this->is_signed = 0;
+	this->isSigned = 0;
 }
 
 Form::~Form()
@@ -29,9 +29,9 @@ Form::~Form()
 
 void	Form::beSigned(Bureaucrat &pelo)
 {
-	if (pelo.getGrade() > this->grade_to_sign)
+	if (pelo.getGrade() > this->gradeToSign)
 		throw Form::GradeTooLowException();
-	this->is_signed = 1;
+	this->isSigned = 1;
 }
 
 void	Form::getStatus() const
@@ -39,12 +39,12 @@ void	Form::getStatus() const
 	std::cout << "[ Form Status ]" << std::endl;
 	std::cout << "Name: " << this->name << std::endl;
 	std::cout << "Signed: ";
-	if (this->is_signed == 0)
+	if (this->isSigned == 0)
 		std::cout << "No" << std::endl;
 	else
 		std::cout << "Yes" << std::endl;
-	std::cout << "Grade required to sign: " << this->grade_to_sign << std::endl;
-	std::cout << "Grade required to execute: " << this->grade_to_exec << std::endl;
+	std::cout << "Grade required to sign: " << this->gradeToSign << std::endl;
+	std::cout << "Grade required to execute: " << this->gradeToExec << std::endl;
 }
 
 std::string	Form::getName() const
@@ -54,15 +54,19 @@ std::string	Form::getName() const
 
 std::ostream &operator<<(std::ostream &arg, const Form &form)
 {
-	arg << form.getName();
+	arg << form.getName() << ", ";
+	if (form.isItSigned())
+		arg << "is signed, " << "level to sign: " << form.getGradeToSign() << " level to exec: " << form.getGradeToExec();
+	else
+		arg << "is not signed, " << "level to sign: " << form.getGradeToSign() << " level to exec: " << form.getGradeToExec();
 	return arg;
 }
 
 void	Form::execute(Bureaucrat const &executor) const
 {
-	if (this->is_signed == 0)
+	if (this->isSigned == 0)
 		throw Form::FormNotSignedException();
-	else if (executor.getGrade() > this->grade_to_sign)
+	else if (executor.getGrade() > this->gradeToSign)
 		throw Form::GradeTooLowException();
 	else if (executor.getGrade() < 1)
 		throw Form::GradeTooHighException();
@@ -76,4 +80,34 @@ void	Form::setTarget(const std::string &target)
 std::string	Form::getTarget() const
 {
 	return this->target;
+}
+
+int		Form::getGradeToSign() const
+{
+	return gradeToSign;
+}
+
+int		Form::getGradeToExec() const
+{
+	return	gradeToExec;
+}
+
+bool	Form::isItSigned() const
+{
+	return	isSigned;
+}
+
+Form	&Form::operator=(const Form &cpy)
+{
+	if (this == &cpy)
+		return *this;
+	std::string* tmp((std::string*)&(name));
+	*tmp = cpy.name;
+	this->isSigned = cpy.isSigned;
+	return *this;
+}
+
+Form::Form(const Form &cpy) : isSigned(cpy.isSigned), gradeToSign(cpy.gradeToSign), gradeToExec(cpy.gradeToExec)
+{
+	*this = cpy;
 }

@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 07:01:32 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/25 11:25:43 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:27:04 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class	Fixed {
 	private:
 		int					integer;
-		static const int	fractional_integer = 8;
+		static const int	fractionalInteger = 8;
 	public:
 		Fixed(const Fixed &cpy); // copy constructor
 		Fixed &operator=(const Fixed &ass); // surcharge

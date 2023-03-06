@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:45:31 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 12:47:25 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/05 15:56:13 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,29 @@ void	Bureaucrat::signForm(Form &contract)
 		contract.beSigned(*this);
 		std::cout << this->name << " signed the form [ " << contract.getName() << " ]" << std::endl;
 	}
-	catch(std::exception &e)
+	catch(Form::GradeTooLowException &e)
 	{
 		std::cout << this->name << " couldn't sign " << contract.getName() << " because [";
-		std::cout << e.what() << "]" << std::endl;
+		std::cout << e.whaat() << "]" << std::endl;
 	}
+	catch(Bureaucrat::GradeTooHighException &e)
+	{
+		std::cout << this->name << " couldn't sign " << contract.getName() << " because [";
+		std::cout << e.whaat() << "]" << std::endl;
+	}
+}
+
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
+{
+	if (this == &cpy)
+		return *this;
+	std::string* tmp((std::string*)&(name));
+	*tmp = cpy.name;
+	this->level = cpy.level;
+	return *this;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &cpy) : name(cpy.name)
+{
+	*this = cpy;
 }

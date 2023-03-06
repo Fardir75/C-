@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:45:31 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/28 15:54:06 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:43:30 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,19 @@ void	Bureaucrat::decrementGrade()
 	if ((this->level + 1) > 150)
 		throw Bureaucrat::GradeTooLowException();
 	this->level++;
+}
+
+Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
+{
+	if (this == &cpy)
+		return *this;
+	std::string* tmp((std::string*)&(name));
+	*tmp = cpy.name;
+	this->level = cpy.level;
+	return *this;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat &cpy) : name(cpy.name)
+{
+	*this = cpy;
 }

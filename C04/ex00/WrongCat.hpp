@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:45:18 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 08:57:07 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 15:54:41 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ class WrongCat : public WrongAnimal
         WrongCat &operator=(const WrongCat &ass);
         WrongCat();
         ~WrongCat();
+        
         void    makeSound() const;
 };
 

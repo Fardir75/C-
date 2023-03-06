@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/26 11:08:24 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/22 16:52:12 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main()
 
 // My Own Tests
 
-/*    std::cout << (a < b) << std::endl;
+    std::cout << std::endl << (a < b) << std::endl;
     std::cout << a + a << std::endl;
     std::cout << b * a << std::endl;
     std::cout << b / 2 << std::endl;
@@ -36,6 +36,6 @@ int main()
     Fixed c(5);
     if (c == 10)
         std::cout << "c == 5" << std::endl;
-*/
+
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/31 14:34:49 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/05 18:51:13 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main ()
 {
-	
+	srand(time(0));
 	Bureaucrat				john("John", 1);
 	Bureaucrat				gontrant("Gontrant", 150);
 	ShrubberyCreationForm	shrub("cozy");

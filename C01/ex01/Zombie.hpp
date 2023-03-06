@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:45:38 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/13 18:27:40 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/21 19:11:41 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Zombie
 		std::string	name;
 	public:
 		void	announce();
-		void	SetName(std::string name);
+		void	setName(std::string name);
 		Zombie();
 		~Zombie();
 };

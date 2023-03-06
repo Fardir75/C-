@@ -6,16 +6,16 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:11:12 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:17:52 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/01 09:06:34 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-WrongCat::WrongCat()  : WrongAnimal()
+WrongCat::WrongCat() : WrongAnimal()
 {
-	this->type = "WrongCat";
 	std::cout << "Created WrongCat" << std::endl;
+	this->type = "WrongCat";
 }
 
 WrongCat::~WrongCat()
@@ -30,9 +30,9 @@ void	WrongCat::makeSound() const
 
 WrongCat &WrongCat::operator=(const WrongCat &ass)
 {
-    std::cout << "assignement copy called" << std::endl;
     if (this == &ass)
         return *this;
+    std::cout << "assignement copy called" << std::endl;
     this->type = ass.getType();
     return *this;
 }

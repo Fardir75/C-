@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.cpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 14:36:02 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/14 16:59:36 by eavilov          ###   ########.fr       */
+/*   Created: 2023/01/29 13:41:51 by eavilov           #+#    #+#             */
+/*   Updated: 2023/03/03 18:31:52 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include <typeinfo>
+#ifndef	PRESIDENTIALPARDONFORM_HPP
+#define	PRESIDENTIALPARDONFORM_HPP
 
-Weapon::Weapon(std::string WeaponType)
-{
-	this->WeaponType = WeaponType;
-}
+#include "Form.hpp"
 
-void	Weapon::setType(std::string WeaponType)
+class PresidentialPardonForm : public Form
 {
-	this->WeaponType = WeaponType;
-}
+	private:
+		std::string	target;
+	public:
+		PresidentialPardonForm(const PresidentialPardonForm &cpy);
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &cpy);
+		PresidentialPardonForm(const std::string target);
+		~PresidentialPardonForm();
+};
 
-int main()
-{
-	std::cout << typeid(Weapon).name() << std::endl;
-}
+#endif

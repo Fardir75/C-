@@ -6,11 +6,20 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/31 14:44:12 by eavilov           #+#    #+#             */
-/*   Updated: 2023/02/07 16:24:33 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/05 18:01:47 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Convert.hpp"
+
+int	impossible()
+{
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: NaNf" << std::endl;
+	std::cout << "double: NaN" << std::endl;
+	return 1;
+}
 
 int	isChar(std::string	ArgValue)
 {
@@ -21,14 +30,14 @@ int	isChar(std::string	ArgValue)
 
 int	isFloat(std::string ArgValue)
 {
-	int	len = ArgValue.size();
-	int	dot = 0;
-	int	num = 0;
-	int minus = 0;
+	size_t	len = ArgValue.size();
+	size_t	dot = 0;
+	size_t	num = 0;
+	size_t minus = 0;
 	
 	if (ArgValue[0] == '-')
 		minus++;
-	for (int i = 0; i < len; i++)
+	for (size_t i = 0; i < len; i++)
 	{
 		if (ArgValue[i] == '.')
 			dot++;
@@ -42,7 +51,7 @@ int	isFloat(std::string ArgValue)
 
 int	isInt(std::string ArgValue)
 {
-	int	i = 0;
+	size_t	i = 0;
 	if (ArgValue[0] == '-')
 		i++;	
 	while (i < ArgValue.size())
@@ -56,13 +65,13 @@ int	isInt(std::string ArgValue)
 
 int	isDouble(std::string ArgValue)
 {
-	int	dot = 0;
-	int	num = 0;
-	int minus = 0;
+	size_t	dot = 0;
+	size_t	num = 0;
+	size_t minus = 0;
 
 	if (ArgValue[0] == '-')
 		minus++;
-	for (int i = 0; i < ArgValue.size(); i++)
+	for (size_t i = 0; i < ArgValue.size(); i++)
 	{
 		if (ArgValue[i] == '.')
 			dot++;
@@ -74,75 +83,103 @@ int	isDouble(std::string ArgValue)
 	return 0;
 }
 
+bool	isPoint(std::string ArgValue)
+{
+	for (size_t i = 0;i<ArgValue.size();i++)
+	{
+		if (ArgValue[i] == '.' && (ArgValue[i + 1] != '0'))
+			return 1;
+	}
+	return 0;
+}
+
 void	convert(std::string	ArgValue)
 {
 	long long	iValue = 0;
 	float		fValue = 0.0f;
 	double		dValue = 0.0;
-	char		cValue = 0;
+	int			cValue = 0;
 	
-	if (ArgValue.size() == 0)
+	for (size_t i = 0; i<ArgValue.size();i++)
+	{
+		if ((ArgValue[i] == '-' && i != 0) || (ArgValue[i] == '.' && i < 1))
+			exit(impossible());
+		if (ArgValue[i] == '.' && (ArgValue[i + 1] < 48 || ArgValue[i + 1] > 57))
+			exit(impossible());
+	}
+	if (!ArgValue.size())
 	{
 		iValue = 0;
 		fValue = static_cast<int>(iValue);
 		dValue = static_cast<int>(iValue);
 		cValue = static_cast<int>(iValue);
 	}
-	else if (isChar(ArgValue))
-	{
-		iValue = ArgValue[0];
-		fValue = static_cast<int>(iValue);
-		dValue = static_cast<int>(iValue);
-		cValue = static_cast<int>(iValue);
-	}
 	else if (isInt(ArgValue))
 	{
-		iValue = atoi(ArgValue.c_str());
-		fValue = static_cast<float>(iValue);
+		iValue = std::strtol(ArgValue.c_str(), NULL, 10);
+		cValue = static_cast<int>(iValue);
+		fValue = static_cast<double>(iValue);
 		dValue = static_cast<double>(iValue);
-		cValue = static_cast<char>(iValue);
+	}
+	else if (isChar(ArgValue))
+	{
+		cValue = ArgValue[0];
+		iValue = static_cast<long long>(cValue);
+		fValue = static_cast<double>(iValue);
+		dValue = static_cast<double>(iValue);
 	}
 	else if (isFloat(ArgValue))
 	{
-		iValue = std::stoi(ArgValue);
-		fValue = atof(ArgValue.c_str());
-		dValue = static_cast<double>(iValue);
+		fValue = std::strtof(ArgValue.c_str(), NULL);
+		dValue = static_cast<double>(fValue);
+		iValue = atol(ArgValue.c_str());
+		cValue = static_cast<int>(iValue);
 	}
 	else if (isDouble(ArgValue))
 	{
-		iValue = std::stoi(ArgValue);
-		fValue = static_cast<float>(iValue);
-		dValue = static_cast<double>(iValue);
-		cValue = static_cast<char>(iValue);
+		dValue = std::strtod(ArgValue.c_str(), NULL);
+		iValue = atoi(ArgValue.c_str());
+		fValue = static_cast<float>(dValue);
+		cValue = static_cast<int>(dValue);
 	}
 	std::cout << "char: ";
 	if ((cValue >= 32 && cValue <= 47) || (cValue >= 58 && cValue <= 126))
-        std::cout << "'" <<  cValue << "'" << std::endl;
+        std::cout << "'" <<  static_cast<char>(cValue) << "'" << std::endl;
 	else if (cValue < 32 || cValue > 126 || (cValue >= 48 && cValue <= 57))
         std::cout << "Non displayable" << std::endl;
     else
+	{
         std::cout << "impossible" << std::endl;
+	}
 	std::cout << "int: ";
-	if (iValue >= INT_MIN && iValue <= INT_MAX)
+	if (dValue >= INT_MIN && dValue <= INT_MAX)
 		std::cout << iValue << std::endl;
 	else
 		std::cout << "impossible" << std::endl;
 	std::cout << "float: ";
-    if (fValue >= INT_MIN && fValue <= INT_MAX)
+    if ((fValue <= -FLT_MIN || fValue <= FLT_MAX) || fValue == 0)
     {
-        if (iValue == fValue)
+		if (fValue > FLT_MAX)
+			std::cout << "impossible" << std::endl;
+        else if (iValue == fValue)
             std::cout << fValue << ".0f" << std::endl;
         else
             std::cout << fValue << "f" << std::endl;
 	}
+	else
+		std::cout << "impossible" << std::endl;
 	std::cout << "double: ";
-    if (dValue >= -DBL_MIN && dValue <= DBL_MAX)
+    if ((dValue <= -DBL_MIN || dValue < DBL_MAX) || fValue == 0)
     {
-        if (dValue == fValue)
+		if (dValue > DBL_MAX)
+			std::cout << "impossible" << std::endl;
+        else if (!isPoint(ArgValue))
             std::cout << dValue << ".0" << std::endl;
         else
             std::cout << dValue << std::endl;
     }
     else
+	{
         std::cout << "impossible" << std::endl;
+	}
 }

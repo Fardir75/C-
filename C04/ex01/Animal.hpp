@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 14:10:59 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/01 09:08:11 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:38:35 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Animal
         Animal(const Animal &cpy);
         Animal  &operator=(const Animal &replacement);
         virtual void        makeSound() const;
+        virtual void        printIdeas() const;
         std::string getType() const;
 };
 

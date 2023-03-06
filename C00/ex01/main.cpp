@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 19:00:22 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/17 10:01:48 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 15:43:25 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	FindContact(std::string argument, PhoneBook list)
 	else if (argument == "8")
 		list.GetContact(7);
 	else
-		std::cout << "Invalid argument";
+		std::cout << "Invalid argument" << std::endl << "Type something: ";
 }
 
 int main()

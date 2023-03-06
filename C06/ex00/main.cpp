@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/02/01 15:27:05 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 19:58:06 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ int main(int argc, char **argv)
 		else
 			convert(argv[1]);
 	}
+   // double   i = -2147483647;
+   // std::cout << i << std::endl;
 }

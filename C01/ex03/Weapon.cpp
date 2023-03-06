@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 14:22:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/14 16:54:03 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:50:48 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Weapon::Weapon(std::string WeaponType)
 {
 	if (WeaponType.empty())
-		this->WeaponType = nullptr;
+		this->WeaponType = "";
 	else
 		this->WeaponType = WeaponType;
 }

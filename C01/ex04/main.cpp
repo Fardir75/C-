@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 18:46:24 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/16 18:03:19 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:46:50 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int main(int argc, char **argv)
 			std::cout << "Second argument is invalid" << std::endl;
 			return (1);
 		}
-		std::ofstream	file_replace(replace_file + ".replace");
+		std::string		tmp = replace_file + ".replace";
+		std::ofstream	file_replace(tmp.c_str());
 		if (file_replace.fail())
 		{
 			std::cout << "Issue with second file" << std::endl;

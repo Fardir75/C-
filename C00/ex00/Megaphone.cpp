@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:53:56 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/10 14:53:56 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/21 17:19:18 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int main(int ac, char **av)
 	while (av[++i])
 	{
 		message = av[i];
-		std::transform(message.begin(), message.end(), message.begin(), ::toupper);
+		for (size_t n = 0; n < message.size(); n++)
+			message[n] = toupper(message[n]);
 		std::cout << message;
 	}
 	std::cout << std::endl;

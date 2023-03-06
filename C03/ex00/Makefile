@@ -31,15 +31,16 @@ OBJS	= $(SRCS:.cpp=.o)
 
 FLAGS  = -Wall -Wextra -Werror -std=c++98
 RM		= rm -f
+CC		= c++
 
 all: ${NAME}
 
-${NAME}: ${OBJS} ${HEAD}
-	c++ ${FLAGS} ${SRCS} -o $(NAME)
+${NAME}: ${OBJS} ${HEAD} Makefile
+	${CC} ${FLAGS} ${SRCS} -o $(NAME)
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
-%.o : %.c
-	c++ -c $< -o ${<:.cpp=.o}
+%.o : %.cpp
+	${CC} -c $< -o ${<:.cpp=.o}
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
 #--------------------------------------------------------#

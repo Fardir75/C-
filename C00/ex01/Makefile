@@ -6,7 +6,7 @@
 #    By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/10 13:33:18 by eavilov           #+#    #+#              #
-#    Updated: 2023/01/21 07:01:14 by eavilov          ###   ########.fr        #
+#    Updated: 2023/02/21 17:22:57 by eavilov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ NAME 	= phonebook
 SRCS	= main.cpp \
 			PhoneBook.cpp \
 			Contact.cpp
-HEAD	= Contact.hpp
+HEAD	= Contact.hpp \
 			PhoneBook.hpp
 OBJS	= $(SRCS:.cpp=.o)
 
@@ -48,11 +48,11 @@ RM	   = rm -f
 
 all: ${NAME}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS} ${HEAD} Makefile
 	c++ ${FLAGS} ${SRCS} -o $(NAME)
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
-%.o : %.c
+%.o : %.cpp
 	c++ -c $< -o ${<:.cpp=.o}
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 

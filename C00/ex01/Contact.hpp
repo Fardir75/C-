@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:55:38 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/11 19:00:58 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:07:47 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 class Contact
 {

@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:07 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 12:00:09 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:26:34 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,11 @@ int main()
 	{
 		std::cout << e.whaat() << std::endl;
 	}
+
+	Bureaucrat	jean("Jean", 1);
+	Bureaucrat	jean2(jean);
+	Bureaucrat	yves("Yves", 42);
+	yves = jean2;
+	std::cout << jean2 << std::endl;
+	std::cout << yves << std::endl;
 }

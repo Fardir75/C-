@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 18:57:06 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/11 19:00:29 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:15:19 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	PhoneBook::GetAll(int limit)
 	std::cout << "0 | -First name- | -Last name- | -Nickname- |" << std::endl;
 	while (index < limit)
 	{
-		std::cout << std::to_string(index + 1) + " | ";
+		std::cout << index + 1 <<  " | ";
 		list[index].DisplayBasic();
 		std::cout << std::endl;
 		index++;
@@ -38,7 +38,7 @@ void	PhoneBook::GetContact(int index)
 	std::cout << "0 | -First name- | -Last name- | -Nickname- | -Phone Numb- | -Darkest Secret- |" << std::endl;
 	if (index > 7)
 		index = 0;
-	std::cout << std::to_string(index + 1) + " | ";
+	std::cout << index + 1 << " | ";
 	list[index].DisplayContact();
 	std::cout << std::endl << "Type something: ";
 }

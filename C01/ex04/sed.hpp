@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 17:03:37 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/16 17:58:00 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/02/13 14:43:26 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 #endif

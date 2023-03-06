@@ -6,7 +6,7 @@
 #    By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/09 16:25:27 by eavilov           #+#    #+#              #
-#    Updated: 2023/01/10 11:56:40 by eavilov          ###   ########.fr        #
+#    Updated: 2023/02/21 17:22:21 by eavilov          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,11 @@ RM		= rm -f
 
 all: ${NAME}
 
-${NAME}: ${OBJS}
+${NAME}: ${OBJS} ${HEAD} Makefile
 	c++ ${FLAGS} ${SRCS} -o $(NAME)
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 
-%.o : %.c
+%.o : %.cpp
 	c++ -c $< -o ${<:.cpp=.o}
 	printf "${ERASE}${FAINT}${CC}${FLAGS} -c -o ${RESET}${CYAN}${BOLD}$@${RESET} ${FAINT}${BLUE}$<${RESET}"
 

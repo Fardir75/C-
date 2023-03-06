@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 14:45:06 by eavilov           #+#    #+#             */
-/*   Updated: 2023/01/29 12:53:23 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/03 16:44:08 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ class Bureaucrat
 		const std::string	name;
 		int					level;
 	public:
+		Bureaucrat(const Bureaucrat &cpy);
+		Bureaucrat &operator=(const Bureaucrat &cpy);
 		Bureaucrat(const std::string name, int level);
 		~Bureaucrat();
 		std::string		getName() const;
