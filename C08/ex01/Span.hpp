@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 08:57:30 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/08 13:40:03 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/09 13:33:07 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <climits>
+#include <stdlib.h>
 
 using	std::cout;
 using	std::endl;
@@ -27,7 +29,7 @@ class Span
 		int					max;
 	public:
 		void	addNumber(int value);
-		void	addNumbers(int value, int amount);
+		void	addNumbers(int amount);
 
 		int		shortestSpan();
 		int		longestSpan();
@@ -35,6 +37,7 @@ class Span
 		int		getIterator() const;
 		int		getNumber(int index) const;
 		std::vector <int>	getArray() const;
+		Span();
 		Span(unsigned int N);
 		~Span();
 		Span(const Span &cpy);
@@ -44,6 +47,9 @@ class Span
 		};
 		class	OutOfBounds : public std::exception {
 			virtual const char* what( void ) const throw(){ return "Index out of bounds";}
+		};
+		class	NotEnoughValues : public std::exception {
+			virtual const char* what( void ) const throw(){ return "Not Enough Values";}
 		};
 };
 

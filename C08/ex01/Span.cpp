@@ -6,11 +6,13 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 09:00:44 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/08 13:49:33 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/09 14:05:27 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
+
+Span::Span() : iterator(0), max(0) {}
 
 Span::Span(unsigned int N) : iterator(0), max(N) {}
 
@@ -38,10 +40,10 @@ void	Span::addNumber(int value)
 	catch (std::exception &e) {cout << e.what() << endl;}
 }
 
-void	Span::addNumbers(int value, int amount)
+void	Span::addNumbers(int amount)
 {
 	for (int i = 0; i < amount; i++)
-		addNumber(value);
+		addNumber(i*i);
 }
 
 Span::Span(const Span &cpy)
@@ -68,15 +70,26 @@ std::ostream	&operator<<(std::ostream &o, Span const &array)
 
 int		Span::shortestSpan()
 {
-	std::vector <int> copy(array);
-	std::sort(copy.begin(), copy.end());
-	for (size_t i = 0; i < copy.size(); i++)
-		std::cout << copy[i] << ' ';
-	cout << endl;
-	return 0;
+	if (iterator < 2)
+		throw NotEnoughValues();
+	std::vector<int> sortedNums(array);
+    std::sort(sortedNums.begin(), sortedNums.end());
+    int smallestDifference = INT_MAX;
+	int	difference		   = 0;
+    for (std::vector<int>::iterator it = sortedNums.begin(); it != sortedNums.end() - 1; it++)
+	{
+        difference = *(it + 1) - *it;
+        if (difference < smallestDifference)
+		{
+            smallestDifference = difference;
+		}
+    }
+    return smallestDifference;
 }
 
 int		Span::longestSpan()
 {
+	if (iterator < 2)
+		throw NotEnoughValues();
 	return (abs(*std::max_element(array.begin(), array.end())) - abs(*std::min_element(array.begin(), array.end())));
 }
