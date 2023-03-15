@@ -6,7 +6,7 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 10:29:25 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/15 15:55:42 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/15 17:29:39 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,20 @@ int	inputParsing(std::list<std::string> *bitDates, std::list<double> *bitValues,
 		return 1;
 	}
 	return 0;
+}
+
+int	isRecent(double year, double month, double day, std::list<std::string>::iterator it)
+{
+	double	yearIt = std::strtod(it->substr(0, it->find('-')).c_str(), NULL);
+	double	monthIt = std::strtod(it->substr(5, 2).c_str(), NULL);
+	double	dayIt = std::strtod(it->substr(8, 2).c_str(), NULL);
+	if ((yearIt < 2010 || yearIt > 2023) || (monthIt < 0 || monthIt > 12) || (dayIt < 0 || dayIt > 30))
+		return 1;
+	if (yearIt > year)
+		return 0;
+	else if (monthIt > month)
+		return 0;
+	else if (dayIt > day)
+		return 0;
+	return 1;
 }

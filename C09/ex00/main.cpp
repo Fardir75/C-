@@ -6,34 +6,43 @@
 /*   By: eavilov <eavilov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 10:29:42 by eavilov           #+#    #+#             */
-/*   Updated: 2023/03/15 16:08:00 by eavilov          ###   ########.fr       */
+/*   Updated: 2023/03/15 17:29:47 by eavilov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-int	isRecent(double year, double month, double day, std::list<std::string>::iterator it)
+bool	isIncorrectIt(std::list<std::string>::iterator it)
 {
-	double	yearIt = std::strtod(it->substr(0, 4).c_str(), NULL);
-	double	monthIt = std::strtod(it->substr(5, 2).c_str(), NULL);
-	double	dayIt = std::strtod(it->substr(8, 2).c_str(), NULL);
-	if (yearIt < 2010 || (monthIt < 0 || monthIt > 12) || (dayIt < 0 || dayIt > 30))
+	int	minus = 0;
+	int numbers = 0;
+	std::string	cpy = *it;
+	for (size_t i = 0; i < cpy.size(); i++)
 	{
+		if (cpy[i] <= '9' || cpy[i] >= '0')
+			numbers++;
+		if (cpy[i] == '-')
+			minus++;
+	}
+	if (minus + numbers != 12)
 		return 1;
-	}
-	if (yearIt > year)
+	return 0;
+}
+
+bool	isIncorrectfIt(std::map<std::string,double>::iterator fIt)
+{
+	int	minus = 0;
+	int numbers = 0;
+	for (size_t i = 0; i < fIt->first.size(); i++)
 	{
-		return 0;
+		if (fIt->first[i] <= '9' || fIt->first[i] >= '0')
+			numbers++;
+		if (fIt->first[i] == '-')
+			minus++;
 	}
-	else if (monthIt > month)
-	{
-		return 0;
-	}
-	else if (dayIt > day)
-	{
-		return 0;
-	}
-	return 1;
+	if (minus + numbers != 12)
+		return 1;
+	return 0;
 }
 
 void	theBigAlgo(std::map<std::string,double> fileMap, char *file)
@@ -51,31 +60,44 @@ void	theBigAlgo(std::map<std::string,double> fileMap, char *file)
 	std::list<double>::iterator it2 = bitValues.begin();
 	while (it != bitDates.end())
 	{
-		double	year = std::strtod(fIt->first.substr(0, 4).c_str(), NULL);
-		double	month = std::strtod(fIt->first.substr(5, 2).c_str(), NULL);
-		double	day = std::strtod(fIt->first.substr(8, 2).c_str(), NULL);
-		if (isRecent(year, month, day, it) || maxSize == fileMap.size())
+		if (!isIncorrectfIt(fIt))
 		{
-			if (std::strtod(it->substr(0, 4).c_str(), NULL) < 2010 || (month < 0 || month > 12) || (day < 0 || day > 30))
-				std::cout << "Error: bad input => " << *it << std::endl;
-			else if (*it2 < 0)
-				std::cout << "Error: negative integer." << std::endl;
-			else if (*it2 > 1000)
-				std::cout << "Error: number too large." << std::endl;
+			double	year = std::strtod(fIt->first.substr(0, it->find('-')).c_str(), NULL);
+			double	month = std::strtod(fIt->first.substr(5, 2).c_str(), NULL);
+			double	day = std::strtod(fIt->first.substr(8, 2).c_str(), NULL);
+			if (isRecent(year, month, day, it) || maxSize == fileMap.size())
+			{
+				if ((std::strtod(it->substr(0, 4).c_str(), NULL) < 2010 || std::strtod(it->substr(0, 4).c_str(), NULL) > 2023) || (month < 0 || month > 12) || (day < 0 || day > 30))
+					std::cout << "Error: bad input => " << *it << std::endl;
+				else if (*it2 < 0)
+					std::cout << "Error: negative integer." << std::endl;
+				else if (*it2 > 1000)
+					std::cout << "Error: number too large." << std::endl;
+				else if (isIncorrectIt(it))
+					std::cout << "Incorrect value in input file" << std::endl;
+				else
+				{
+					if (maxSize != 0)
+						fIt--;
+					std::cout << *it << " => " << *it2 << " = ";
+					std::cout << fIt->second * *it2 << std::endl;
+				}
+				it++;
+				it2++;
+			}
 			else
 			{
-				if (maxSize != 0)
-					fIt--;
-				std::cout << *it << " => " << *it2 << " = ";
-				std::cout << fIt->second * *it2 << std::endl;
+				maxSize++;
+				fIt++;
 			}
-			it++;
-			it2++;
 		}
 		else
 		{
+			std::cout << "Error: incorrect values in .csv file" << std::endl;
 			maxSize++;
 			fIt++;
+			it++;
+			it2++;
 		}
 	}
 	input.close();
@@ -84,7 +106,7 @@ void	theBigAlgo(std::map<std::string,double> fileMap, char *file)
 int	main(int ac, char **av)
 {
 	std::map<std::string,double>	fileMap;
-	std::ifstream	file("data.csv");
+	std::ifstream	file("data2.csv");
 	std::string		fileContent;
 	if (file.fail())
 		return myError("couldn't open data.csv");
