@@ -37,11 +37,11 @@ all: ${NAME}
 
 ${NAME}: ${OBJS} ${HEAD} Makefile
 	c++ ${FLAGS} ${SRCS} -o $(NAME)
-	printf "${ERASE}${BLACK}${CC}${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}"
+	printf "${ERASE}${BLACK}${CC}${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}\n"
 
 %.o : %.cpp
 	c++ -c $< -o ${<:.cpp=.o}
-	printf "${ERASE}${BLACK}${CC}${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}"
+	printf "${ERASE}${BLACK}${CC}${FLAGS} -c -o ${RESET}${RED}${BOLD}$@${RESET} ${BLACK}${YELLOW}$<${RESET}\n"
 
 #--------------------------------------------------------#
 #					--	 MAKE COMMANDS	--			 	 #
